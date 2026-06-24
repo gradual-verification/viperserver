@@ -3,4 +3,4 @@
 	url = https://github.com/viperproject/carbon.git
 [submodule "silicon"]
 	path = silicon
-	url = https://github.com/viperproject/silicon.git
+	url = https://github.com/gradual-verification/silicon.git
