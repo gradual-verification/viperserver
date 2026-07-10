@@ -68,16 +68,17 @@ class DefaultVerificationExecutionContext(actorSystemName: String = "Actor_Syste
 
   override def reportFailure(cause: Throwable): Unit = context.reportFailure(cause)
 
-  private var system: Option[ActorSystem] = Some(ActorSystem(actorSystemName))
+  // private var system: Option[ActorSystem] = Some(ActorSystem(actorSystemName))
+  private var system: Option[ActorSystem] = None
   override def actorSystem: ActorSystem = system.getOrElse(throw new IllegalStateException(s"actor system has been terminated"))
 
   override def submit(r: Runnable): java_concurrent.Future[_] = context.submit(r)
 
   @throws(classOf[InterruptedException])
   override def terminate(timeoutMSec: Long = 1000): Unit = {
-    val oldSystem = actorSystem
-    system = None
-    Await.ready(oldSystem.terminate(), FiniteDuration(timeoutMSec, TimeUnit.MILLISECONDS))
+    // val oldSystem = actorSystem
+    // system = None
+    // Await.ready(oldSystem.terminate(), FiniteDuration(timeoutMSec, TimeUnit.MILLISECONDS))
     executorService.shutdown()
     executorService.awaitTermination(timeoutMSec, TimeUnit.MILLISECONDS)
   }
