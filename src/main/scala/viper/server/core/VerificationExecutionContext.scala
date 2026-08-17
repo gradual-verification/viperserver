@@ -11,8 +11,7 @@ import java.util.{concurrent => java_concurrent}
 
 import akka.actor.ActorSystem
 
-import scala.concurrent.duration.FiniteDuration
-import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutorService, Future}
+import scala.concurrent.{ExecutionContext, ExecutionContextExecutorService, Future}
 
 trait VerificationExecutionContext extends ExecutionContext {
   def executorService: ExecutorService
